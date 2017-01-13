@@ -1,0 +1,67 @@
+<!-- <!DOCTYPE html>
+ -->
+<!-- Refer to : http://www.aichengxu.com/view/4320331 -->
+ <html lang="en">
+<head>
+	<title> Mike Qiang </title>
+	{% load staticfiles %}
+ 	<link rel="stylesheet" type="text/css" href={% static 'polls/css/bootstrap.min.css' %}>
+
+	<meta charset="utf-8" />
+
+	<meta name="viewport" content = "width=device-width, initial-scale=1.0">
+	
+	<style type="text/css">
+		html,
+		body {
+		  height:100%
+		}
+	</style>
+</head>
+<body class="body" style="background-color: #00cc00">
+ 	<div class="container-fluid" style="min-height: 95%; ">
+		<div class="row">
+			<div class="col_sm_2">
+			<br>
+			<center>
+				<img src="{% static 'polls/images/WifeandMe.jpg' %}" class="responsive-img" style='max-height:100px;' alt="face" />
+
+			</center>
+			</div>
+			<div class="col-sm-10">
+				  <br>
+				  <center>
+				  <h3>Learn, Practice and Contribute</h3>
+				  </center>
+			  </div>
+		</div><hr>
+		<div class="row">
+		  <div class="col-sm-2">
+		  <br>
+
+		  <br>
+		   <!-- Great, til you resize. -->
+			<!--<div class="well bs-sidebar affix" id="sidebar" style="background-color:#fff">-->
+
+			{% block nav %}
+			{% endblock %}
+
+ 		 	</div> <!--col-sm-2-->
+		  	<div class="col-sm-10">
+		  
+				<div class='container-fluid'>
+				<br><br>
+			   		{% block content %}
+			   		{% endblock %}	
+				</div>
+		  	</div>
+		</div>
+	</div>
+	<footer>
+		<div class="container-fluid" style='margin-left:15px'>
+			<p><a href="#" target="blank">Contact</a> | <a href="#" target="blank">LinkedIn</a> | <a href="#" target="blank">Twitter</a> | <a href="#" target="blank">Google+</a></p>
+		</div>
+	</footer>	
+	
+</body>
+</html>
