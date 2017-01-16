@@ -3,38 +3,18 @@ from django.shortcuts import get_object_or_404,render
 from django.urls import reverse
 from django.views import generic
 
-#from django.template import loader
-
-# #testing
-# from numpy import exp, cos, linspace
-# import matplotlib.pyplot as plt  
-# import os,time,glob
-# #end of testing
-
 from .models import Choice, Question
 
-# def dampled_vibrations(t,A,b,w):
-# 	return A*exp(-b*t)*cos(w*t)
-
-# def compute(A,b,w,T, resolution=500):
-# 	print os.getcwd()
-# 	t = linspace(0,T,resolution+1)
-# 	y = dampled_vibrations(t,A,b,w)
-# 	plt.figure()
-# 	plt.plot(t,y)
-# 	#plt.show()
-# 	plt.title('A=%g,b=%g,w=%g' % (A,b,w))
-# 	return "compute finished"
-
 # Create your views here.
-class IndexView(generic.ListView):
-	template_name = 'polls/index.html'
-	context_object_name = 'latest_question_list'
 
-	def get_queryset(self):
-		"""Return the last five published questions."""
-		#print compute(1,0.1,1,20)
-		return Question.objects.order_by('-pub_date')[:5]
+# class IndexView(generic.ListView):
+# 	template_name = 'polls/index.html'
+# 	context_object_name = 'latest_question_list'
+
+# 	def get_queryset(self):
+# 		"""Return the last five published questions."""
+# 		#print compute(1,0.1,1,20)
+# 		return Question.objects.order_by('-pub_date')[:5]
 
 class DetailView(generic.DetailView):
 	model = Question
@@ -45,15 +25,29 @@ class ResultsView(generic.DetailView):
 	template_name = 'polls/results.html'
 
 
-# def index(request):
-# 	#return HttpResponse("Hello, World!")
-# 	latest_question_list = Question.objects.order_by('-pub_date')[:5]
-# 	#template = loader.get_template('polls/index.html')
-# 	context = {
-# 		'latest_question_list':latest_question_list,
-# 	}
-# 	#return HttpResponse(template.render(context,request))
-# 	return render(request,'polls/index.html', context)
+def index(request):
+	#return HttpResponse("Hello, World!")
+	latest_question_list = Question.objects.order_by('-pub_date')[:5]
+	sidebar_items = [
+			{'name': 'polls1', 'site':'/polls/'},
+			{'name': 'Sci Calc1', 'site':'/my_sci/'},
+		]
+	# sidebar_items = tuple(sidebar_items)
+	names = [d['name'] for d in sidebar_items]
+	sites = [s['site'] for s in sidebar_items]
+	# print("Calling index")
+	# print names
+	# print sites
+	site_items = zip(names, sites)
+	# print site_items
+	#template = loader.get_template('polls/index.html')
+
+	context = {
+		'latest_question_list':latest_question_list,
+		'site_items':site_items,
+	}
+	#return HttpResponse(template.render(context,request))
+	return render(request,'polls/index.html', context)
 
 # def detail(request,question_id):
 # 	question = get_object_or_404(Question, pk=question_id)

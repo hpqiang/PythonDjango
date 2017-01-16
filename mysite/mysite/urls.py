@@ -19,7 +19,8 @@ from django.contrib import admin
 from polls import views
 
 urlpatterns = [
-	url(r'^$',views.IndexView.as_view(), name='home'), #MQ
+	# url(r'^$',views.IndexView.as_view(), name='home'), #MQ
+	url(r'^$',views.index, name='home'), #MQ
 
 	url(r'^polls/', include('polls.urls')),
 	url(r'^my_sci/', include('my_sci.urls')),

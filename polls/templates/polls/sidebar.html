@@ -1,0 +1,20 @@
+	<div class="well bs-sidebar" id="sidebar1" style="background-color:#fff">
+	  <ul class="nav nav-pills nav-stacked">
+<!-- 		<li><a href='#'>Side Bar</a></li>
+		<li><a href='/polls/'>Polls</a></li>
+		<li><a href='/my_sci/'>Sci Calc</a></li>
+		<li><a href='#'>Machine Learning</a></li>
+		<li><a href='#'>Image Processing</a></li>
+		<li><a href='#'>3D graphics</a></li>
+		<li><a href='#'>Finance</a></li>
+		<li><a href='#'>CRM</a></li>
+		<li><a href='#'>Bank</a></li>
+		<li><a href='#'>Health</a></li>
+		<li><a href='#'>Education</a></li>
+ -->
+		{% for key,value in site_items %}
+			<li><a href='{{value}}'>{{key}}</a></li>
+		{% endfor %}
+		<li><a href='#'>Contact</a></li>
+	  </ul>
+	</div> <!--well bs-sidebar affix-->
